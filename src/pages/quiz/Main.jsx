@@ -30,7 +30,10 @@ export const Main = () => {
     axios.get('https://opentdb.com/api.php?amount=10')
       .then((response) => {
         setLoading(false);
-        setQuizList(response.data.results)
+        for(let item of response.data.results) {
+          Object.assign(item, {optionList: [...item.incorrect_answers, item.correct_answer].sort()})
+        }
+        setQuizList(response.data.results);
         navigate(ROUTE.QUIZ);
       })
       .catch((error) => {
@@ -49,7 +52,7 @@ export const Main = () => {
   }
 
   return (
-    <div className={'main'}>
+    <div className={'mainContent'}>
       {loading ? <BeatLoader color="#36d7b7" /> :
       <Button clickEvent={clickQuizBtn} type={'quiz'} text={'퀴즈 풀기'}></Button>}
     </div>

@@ -4,5 +4,5 @@
 export const ROUTE = {
   MAIN      :     '/'       ,
   QUIZ      :     '/quiz'   ,
-  RESULT    :     'result'  ,
+  RESULT    :     '/result'  ,
 }
