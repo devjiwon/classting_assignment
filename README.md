@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+## 클래스팅 과제테스트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+클래스팅 과제 테스트입니다.
 
-## Available Scripts
+### 프로젝트 실행 방법
+* package.json을 통해 npm install
+* npm run start
 
-In the project directory, you can run:
+### 버전정보
+* node version : v16.20.2
+* npm version : v8.19.4
 
-### `npm start`
+### 추가적인 라이브러리 설치
+* react-router-dom 설치 (v6.22.1)
+* recoil 설치 (v0.7.7)
+* axios 설치 (v1.6.7)
+* sass 설치 (v1.71.1)
+* react-spinners 설치 (v0.13.8)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 프로젝트 구조
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+├── src
+│   ├── common
+│   │   ├── recoil
+│   │   │   └── atom.js
+│   │   └── routes.js
+│   ├── components
+│   │   ├── style
+│   │   │   └── Button.scss
+│   │   └── Button.jsx
+│   ├── pages
+│   │   └── quiz
+│   │       ├── index.scss
+│   │       ├── Main.jsx
+│   │       ├── Quiz.jsx
+│   │       └── Result.jsx
+│   ├── App.js
+│   ├── App.css
+│   ├── index.css
+│   └── index.js
+├── README.md
+├── README.old.md
+├── package-lock.json
+└── package.json
+```
 
-### `npm test`
+### 요구사항 체크 리스트 및 구현내용
+**필수 구현**
+- [x] 사용자는 '퀴즈 풀기' 버튼을 클릭하여 퀴즈 풀기를 시작할 수 있다.
+- [ ] 사용자는 문항에 대한 답안을 4개 보기 중에 선택할 수 있다.
+- [ ] 사용자는 답안을 선택하면 다음 문항을 볼 수 있다.
+  - [ ] 답안 선택 후 다음 문항 버튼을 볼 수 있다.
+  - [ ] 답안이 맞았는지 틀렸는지 바로 알 수 있다.
+  - [ ] 다음 문항 버튼을 클릭하여 다음 문항으로 이동할 수 있다.
+- [ ] 모든 문항을 다 풀면 사용자는 다음과 같은 결과 정보를 볼 수 있다.
+  - [ ] 퀴즈를 마칠 때까지 소요된 시간
+  - [ ] 정답 개수
+  - [ ] 오답 수
+  - [ ] 정 오답에 대한 비율을 차트로 표기
+- [ ] 오답 노트 기능
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**추가 구현**
+* [ ] API 에러 처리
+* [ ] 보기 클릭 시, 정답 여부 모달
 
-### `npm run build`
+메모
+* 라우팅
+  * 메인
+  * 퀴즈
+  * 결과
+* 퀴즈 풀기 버튼 클릭 시, 문제 API 호출 & 문제 정보 어따 저장하지 ?
+  * recoil
+* 보기는 랜덤으로 순서
+* 보기 클릭 시, 바로 정답 확인 및 하단에 다음 문항 버튼
+  * 틀렸을 경우, recoil로 문제 저장하기
+* 마지막 문제 보기 클릭 시, 결과 확인 보러가기 버튼
+* 결과 화면
+  * 결과 보여주기
+  * 차트는 원형 차트 ?
+* 오답 노트
+  * 틀린 문제들만 다시 보여주기 (내가 찍은 답, 실제 정답까지)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+문제와 답은 **recoil**로 저장하기
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+감사합니다.
