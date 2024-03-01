@@ -51,12 +51,6 @@ export const Result = () => {
     }
   }, [incorrectQuiz]);
 
-  useEffect(() => {
-    if (incorrectQuiz) {
-      console.log(incorrectQuiz)
-    }
-  }, [incorrectQuiz])
-
   /**
    * 버튼 클릭 이벤트
    */
