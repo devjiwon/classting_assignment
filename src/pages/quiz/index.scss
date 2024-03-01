@@ -1,9 +1,9 @@
-.mainContent {
+.mainContainer {
   height: 100vh;
   line-height: 100vh;
 }
 
-.quizContent {
+.quizContainer {
   padding: 40px 35px;
   overflow: hidden;
 
@@ -39,6 +39,13 @@
       }
     }
   }
+}
 
+.resultContainer {
+
+  .chartContent {
+    display: flex;
+    justify-content: center;
+  }
 
 }

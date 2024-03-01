@@ -15,7 +15,7 @@ import {ROUTE} from "../../common/routes";
 import {Button} from "../../components/Button";
 
 // Assets
-import IC_CORRECT from '../../assets/icon/icon-correct.png';
+import IC_CORRECT from '../../assets/icon/icon_correct.png';
 import IC_INCORRECT from '../../assets/icon/icon_incorrect.png';
 
 export const Quiz = () => {
@@ -84,7 +84,7 @@ export const Quiz = () => {
 
   return (
     quizList.length > 0 ?
-      <div className={'quizContent'}>
+      <div className={'quizContainer'}>
 
         <div>{processNum}번째 퀴즈!</div>
 
