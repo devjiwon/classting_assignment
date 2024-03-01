@@ -18,6 +18,8 @@ export const Result = () => {
   const [incorrectQuiz, setIncorrectQuiz] = useRecoilState(incorrectQuizState);
   // 타이머
   const [timer, setTimer] = useRecoilState(timerState);
+  // 오답 오픈
+  const [openIncorrectQuiz, setOpenIncorrectQuiz] = useState(false);
 
   const [options, setOptions] = useState({
     options: {
@@ -37,7 +39,7 @@ export const Result = () => {
   });
 
   useEffect(() => {
-    if(incorrectQuiz) {
+    if (incorrectQuiz) {
       let tempState = JSON.parse(JSON.stringify(options));
       options['series'] = [
         {
@@ -48,6 +50,12 @@ export const Result = () => {
       setOptions(tempState);
     }
   }, [incorrectQuiz]);
+
+  useEffect(() => {
+    if (incorrectQuiz) {
+      console.log(incorrectQuiz)
+    }
+  }, [incorrectQuiz])
 
   /**
    * 버튼 클릭 이벤트
@@ -73,9 +81,22 @@ export const Result = () => {
         <Chart options={options.options} series={options.series} type="bar" width={380}/>
       </div>
 
-      <div>
+      <h4 className={'inCorrectQuizOpen'} onClick={() => setOpenIncorrectQuiz(true)}>
         틀린 문제 다시보기
-      </div>
+      </h4>
+
+      {openIncorrectQuiz ?
+        <div className={'inCorrectQuizContent'}>
+          {(incorrectQuiz || []).map((item, index) => {
+            return (
+              <div key={index} className={'content'}>
+                <div className={'question'}>Q. {item.question}</div>
+                <div className={'answer'}>A. {item.correct_answer}</div>
+              </div>
+            )
+          })}
+        </div> : ''}
+
       <Button clickEvent={clickQuizBtn} type={'quiz'} text={'다시 퀴즈 풀러가기'}></Button>
     </div>
   );

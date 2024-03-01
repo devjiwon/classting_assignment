@@ -48,4 +48,27 @@
     justify-content: center;
   }
 
+  .inCorrectQuizOpen {
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  .inCorrectQuizOpen:hover {
+    text-decoration: underline;
+  }
+
+  .inCorrectQuizContent {
+    .content {
+      margin-bottom: 20px;
+      .question {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      .answer {
+
+      }
+    }
+
+  }
+
 }
