@@ -9,3 +9,8 @@ export const incorrectQuizState = atom({
   key: 'incorrectQuiz',
   default: [],
 });
+
+export const timerState = atom({
+  key: 'timer',
+  default: 0,
+});

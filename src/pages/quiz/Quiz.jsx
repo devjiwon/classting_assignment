@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import {useNavigate} from "react-router-dom";
 
 // style
@@ -6,7 +6,7 @@ import './index.scss';
 
 // Recoil
 import {useRecoilState} from 'recoil';
-import {incorrectQuizState, quizListState} from '../../common/recoil/atom';
+import {incorrectQuizState, quizListState, timerState} from '../../common/recoil/atom';
 
 // Common
 import {ROUTE} from "../../common/routes";
@@ -31,14 +31,25 @@ export const Quiz = () => {
   const [isVisible, setIsVisible] = useState(false);
   // 정답 여부
   const [isCorrect, setIsCorrect] = useState(false);
+  const timerRef = useRef();
+
+  const [timer, setTimer] = useRecoilState(timerState);
+
+  useEffect(() => {
+    timerRef.current = setInterval(() => {
+      setTimer((time) => time + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(timerRef.current);
+    };
+  }, [timer]);
 
   useEffect(() => {
     if (quizList) {
       if (quizList.length < 1) {
         navigate(ROUTE.MAIN);
       }
-
-      console.log(quizList);
     }
   }, [quizList]);
 
@@ -55,9 +66,6 @@ export const Quiz = () => {
     setIncorrectQuiz(tempState);
     setIsVisible(true);
 
-    console.log("=========== tempState")
-    console.log(tempState)
-
   }
 
   /**
@@ -65,7 +73,6 @@ export const Quiz = () => {
    */
   const clickNextBtn = () => {
 
-    console.log('--')
     let tempList = JSON.parse(JSON.stringify(quizList));
     tempList.shift();
     setQuizList(tempList);

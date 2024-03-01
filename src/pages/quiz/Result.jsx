@@ -10,12 +10,15 @@ import './index.scss';
 
 // Recoil
 import {useRecoilState} from "recoil";
-import {incorrectQuizState} from "../../common/recoil/atom";
+import {incorrectQuizState, timerState} from "../../common/recoil/atom";
 
 export const Result = () => {
   const navigate = useNavigate();
   // 틀린 문제
   const [incorrectQuiz, setIncorrectQuiz] = useRecoilState(incorrectQuizState);
+  // 타이머
+  const [timer, setTimer] = useRecoilState(timerState);
+
   const [options, setOptions] = useState({
     options: {
       chart: {
@@ -56,11 +59,11 @@ export const Result = () => {
   return (
     <div className={'resultContainer'}>
 
-      <div>
+      <h3>
         Result !!
-      </div>
+      </h3>
       <div>
-        총 걸린 시간:
+        총 걸린 시간: {timer}초
       </div>
       <div>
         맞은 문제: {10 - incorrectQuiz.length}개
